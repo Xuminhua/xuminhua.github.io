@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AWS服务器搭建VPN | 学海无涯</title>
+    <meta name="description" content="一个不熬夜的业余程序员">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.c092e235.css" as="style"><link rel="preload" href="/assets/js/app.d0656bfa.js" as="script"><link rel="preload" href="/assets/js/5.14f5043f.js" as="script"><link rel="preload" href="/assets/js/2.781c3519.js" as="script"><link rel="preload" href="/assets/js/1.9afa1492.js" as="script"><link rel="preload" href="/assets/js/13.58f2ae0a.js" as="script"><link rel="prefetch" href="/assets/js/10.96de110a.js"><link rel="prefetch" href="/assets/js/11.141b8344.js"><link rel="prefetch" href="/assets/js/12.3ee1f645.js"><link rel="prefetch" href="/assets/js/14.204e74c5.js"><link rel="prefetch" href="/assets/js/15.a68ccd00.js"><link rel="prefetch" href="/assets/js/16.4e46f9d6.js"><link rel="prefetch" href="/assets/js/17.41325c41.js"><link rel="prefetch" href="/assets/js/18.cef57628.js"><link rel="prefetch" href="/assets/js/19.4e763bdd.js"><link rel="prefetch" href="/assets/js/20.778a90e8.js"><link rel="prefetch" href="/assets/js/21.6ccd3fbe.js"><link rel="prefetch" href="/assets/js/22.95f56522.js"><link rel="prefetch" href="/assets/js/23.c6447a5e.js"><link rel="prefetch" href="/assets/js/24.e3333912.js"><link rel="prefetch" href="/assets/js/25.b3ff6f5e.js"><link rel="prefetch" href="/assets/js/26.2abe4663.js"><link rel="prefetch" href="/assets/js/27.7cf45231.js"><link rel="prefetch" href="/assets/js/28.e44bfa97.js"><link rel="prefetch" href="/assets/js/29.7f01f688.js"><link rel="prefetch" href="/assets/js/30.b56a3273.js"><link rel="prefetch" href="/assets/js/31.6227b7df.js"><link rel="prefetch" href="/assets/js/32.f5c0edc0.js"><link rel="prefetch" href="/assets/js/33.4216a906.js"><link rel="prefetch" href="/assets/js/34.580f757e.js"><link rel="prefetch" href="/assets/js/35.a192d0c2.js"><link rel="prefetch" href="/assets/js/6.8dfde245.js"><link rel="prefetch" href="/assets/js/7.c4357ee0.js"><link rel="prefetch" href="/assets/js/8.f06f4eb5.js"><link rel="prefetch" href="/assets/js/9.6874101d.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.f107d70d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c092e235.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container"><div><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/head.png" alt="学海无涯" class="logo"> <span class="site-name">学海无涯</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="theme-options"><!----> <div class="dark-theme-options toggle-option"><label for="dark-theme-toggle">Enable Dark Theme?</label> <input id="dark-theme-toggle" type="checkbox" checked="checked"></div></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      文章分组
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/AWS认证.html" class="nav-link"><i class="iconfont undefined"></i>
+  AWS认证
+</a></li><li class="dropdown-item"><!----> <a href="/category/Excel.html" class="nav-link"><i class="iconfont undefined"></i>
+  Excel
+</a></li><li class="dropdown-item"><!----> <a href="/category/HTML_CSS.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTML_CSS
+</a></li><li class="dropdown-item"><!----> <a href="/category/Python.html" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/category/SQL.html" class="nav-link"><i class="iconfont undefined"></i>
+  SQL
+</a></li><li class="dropdown-item"><!----> <a href="/category/Others.html" class="nav-link"><i class="iconfont undefined"></i>
+  Others
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  时光机
+</a></div><div class="nav-item"><a href="/aboutme/" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      文章分组
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/AWS认证.html" class="nav-link"><i class="iconfont undefined"></i>
+  AWS认证
+</a></li><li class="dropdown-item"><!----> <a href="/category/Excel.html" class="nav-link"><i class="iconfont undefined"></i>
+  Excel
+</a></li><li class="dropdown-item"><!----> <a href="/category/HTML_CSS.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTML_CSS
+</a></li><li class="dropdown-item"><!----> <a href="/category/Python.html" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/category/SQL.html" class="nav-link"><i class="iconfont undefined"></i>
+  SQL
+</a></li><li class="dropdown-item"><!----> <a href="/category/Others.html" class="nav-link"><i class="iconfont undefined"></i>
+  Others
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  时光机
+</a></div><div class="nav-item"><a href="/aboutme/" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>AWS服务器搭建VPN</span> <!----></p> <!----></section></li></ul> </aside> <div><main class="page reco-hide"> <div class="page-title"><h1>AWS服务器搭建VPN</h1> <hr> <div data-v-63d68988><i class="iconfont reco-account" data-v-63d68988><span data-v-63d68988>Eddy Xu</span></i> <i class="iconfont reco-date" data-v-63d68988><span data-v-63d68988>2019/8/10</span></i> <span id="/views/AWS%E8%AE%A4%E8%AF%81/AWS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-f72ffb60 data-v-63d68988><i class="iconfont reco-eye" style="margin-right: .5rem" data-v-f72ffb60></i> <a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;" data-v-f72ffb60></a></span> <i class="iconfont reco-tag tags" data-v-63d68988><span class="tag-item" data-v-63d68988>
+      aws
+    </span><span class="tag-item" data-v-63d68988>
+      bigdata
+    </span></i></div></div> <div class="content__default"><p>记录AWS学习过程中的一个练手项目： 个人VPN的搭建， 用来看国外一些新的技术文章和登录一些Google Auth的网站。</p> <div class="tip custom-block"><p>有很多可以搭建的服务器，不局限于AWS。
+AWS除了租用EC2服务器的费用，还要考虑网络流量费用，美国的服务器是0.09刀1G.如果流量大的话可以考虑AWS的LightSail， $3.5美刀每月，包1T流量。</p></div> <h3 id="前提"><a href="#前提" aria-hidden="true" class="header-anchor">#</a> 前提</h3> <ul><li><p>注册一个AWS云服务账号</p> <p>你需要一台国内可连接的，在国外的服务器。 AWS注册的关键地方是要绑定信用卡，在使用服务的过程中有可能会对云服务不了解产生一些账单，需要自己考虑后决定。</p></li></ul> <blockquote><p>AWS新注册的账号，会提供一个t2.micro服务器免费一年的套餐（注意：免费套餐里的流量也是有限制的）。如果不是免费套餐，这个搭建会产生费用</p></blockquote> <h3 id="方法一：利用aws-cloudformation搭建"><a href="#方法一：利用aws-cloudformation搭建" aria-hidden="true" class="header-anchor">#</a> 方法一：利用AWS CloudFormation搭建</h3> <p>适合于不熟悉服务器配置的同学</p> <ul><li>第一步：登陆AWS Console，选择合适的Region</li> <li>第二步：搜索CloudFormation服务，并打开
+<ul><li>在CloudFormation页面点击 Create Stack</li> <li>默认设置界面，Amazon S3 URL 的位置输入https://s3.amazonaws.com/webdigi/VPN/Unified-Cloud-Formation.yaml</li> <li>点击下一步，在参数Parameter界面输入以后你的VPN登陆需要用的 用户名，密码，解码码</li> <li>后面一路下一步，至完成，等环境部署好后，你会获得一个服务器的公网ip地址</li></ul></li> <li>第三步：手机或电脑链接vpn
+<ul><li>根据前面的配置，你会获得，VPN服务器ip地址，你自己设置的用户名，密码，加密码</li></ul></li></ul> <p>完成！在手机VPN设置里输入对应信息，支持PPTP / L2TP 连接</p> <p>详细的过程，请参考原文：
+<a href="https://www.webdigi.co.uk/blog/2015/how-to-setup-your-own-private-secure-free-vpn-on-the-amazon-aws-cloud-in-10-minutes" target="_blank" rel="noopener noreferrer">原文地址<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p><a href="https://github.com/Xuminhua/setup-ipsec-vpn/blob/master/README-zh.md" target="_blank" rel="noopener noreferrer">Github 开源地址<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h3 id="方法二：直接在服务器上搭建"><a href="#方法二：直接在服务器上搭建" aria-hidden="true" class="header-anchor">#</a> 方法二：直接在服务器上搭建</h3> <p>以下代码可以部署在ubuntu服务器上，个人感觉比上面的CloudFormation更灵活一些。需要多做一步的是配置security group开一些此服务需要的端口，如UDP 500 和UDP 4500等。上面的模板都帮你配置好了</p> <div class="language-bash line-numbers-mode"><pre class="language-bash"><code><span class="token function">wget</span> https://git.io/vpnsetup -O vpnsetup.sh <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token punctuation">\</span>
+<span class="token assign-left variable">VPN_IPSEC_PSK</span><span class="token operator">=</span><span class="token string">'secretkey'</span> <span class="token punctuation">\</span>
+<span class="token assign-left variable">VPN_USER</span><span class="token operator">=</span><span class="token string">'username'</span> <span class="token punctuation">\</span>
+<span class="token assign-left variable">VPN_PASSWORD</span><span class="token operator">=</span><span class="token string">'password'</span> <span class="token punctuation">\</span>
+<span class="token function">sh</span> vpnsetup.sh
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><h3 id="客户端，手机，平板，电脑-使用vpn服务"><a href="#客户端，手机，平板，电脑-使用vpn服务" aria-hidden="true" class="header-anchor">#</a> 客户端，手机，平板，电脑 使用VPN服务</h3> <p><a href="https://github.com/hwdsl2/setup-ipsec-vpn/blob/master/docs/clients-zh.md" target="_blank" rel="noopener noreferrer">配置 IPsec/L2TP VPN 客户端<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <p>需要注意windows连接前要解决兼容问题, 以管理员身份运行power shell后运行以下代码以后才能连上</p> <div class="language- line-numbers-mode"><pre class="language-text"><code>REG ADD HKLM\SYSTEM\CurrentControlSet\Services\PolicyAgent /v AssumeUDPEncapsulationContextOnSendRule /t REG_DWORD /d 0x2 /f
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div></div> <!----> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">8/17/2019, 9:09:19 PM</span></div></footer> <!----> </main> <div class="valine-wrapper" data-v-4d8d2b84><div id="valine" data-v-4d8d2b84></div></div></div> <div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-0a357e7e data-v-0a357e7e><i class="iconfont reco-up" data-v-0a357e7e></i></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d0656bfa.js" defer></script><script src="/assets/js/5.14f5043f.js" defer></script><script src="/assets/js/2.781c3519.js" defer></script><script src="/assets/js/1.9afa1492.js" defer></script><script src="/assets/js/13.58f2ae0a.js" defer></script>
+  </body>
+</html>

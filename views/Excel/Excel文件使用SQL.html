@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Excel文件使用SQL操作Access | 学海无涯</title>
+    <meta name="description" content="一个不熬夜的业余程序员">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.c092e235.css" as="style"><link rel="preload" href="/assets/js/app.d0656bfa.js" as="script"><link rel="preload" href="/assets/js/5.14f5043f.js" as="script"><link rel="preload" href="/assets/js/2.781c3519.js" as="script"><link rel="preload" href="/assets/js/1.9afa1492.js" as="script"><link rel="preload" href="/assets/js/16.4e46f9d6.js" as="script"><link rel="prefetch" href="/assets/js/10.96de110a.js"><link rel="prefetch" href="/assets/js/11.141b8344.js"><link rel="prefetch" href="/assets/js/12.3ee1f645.js"><link rel="prefetch" href="/assets/js/13.58f2ae0a.js"><link rel="prefetch" href="/assets/js/14.204e74c5.js"><link rel="prefetch" href="/assets/js/15.a68ccd00.js"><link rel="prefetch" href="/assets/js/17.41325c41.js"><link rel="prefetch" href="/assets/js/18.cef57628.js"><link rel="prefetch" href="/assets/js/19.4e763bdd.js"><link rel="prefetch" href="/assets/js/20.778a90e8.js"><link rel="prefetch" href="/assets/js/21.6ccd3fbe.js"><link rel="prefetch" href="/assets/js/22.95f56522.js"><link rel="prefetch" href="/assets/js/23.c6447a5e.js"><link rel="prefetch" href="/assets/js/24.e3333912.js"><link rel="prefetch" href="/assets/js/25.b3ff6f5e.js"><link rel="prefetch" href="/assets/js/26.2abe4663.js"><link rel="prefetch" href="/assets/js/27.7cf45231.js"><link rel="prefetch" href="/assets/js/28.e44bfa97.js"><link rel="prefetch" href="/assets/js/29.7f01f688.js"><link rel="prefetch" href="/assets/js/30.b56a3273.js"><link rel="prefetch" href="/assets/js/31.6227b7df.js"><link rel="prefetch" href="/assets/js/32.f5c0edc0.js"><link rel="prefetch" href="/assets/js/33.4216a906.js"><link rel="prefetch" href="/assets/js/34.580f757e.js"><link rel="prefetch" href="/assets/js/35.a192d0c2.js"><link rel="prefetch" href="/assets/js/6.8dfde245.js"><link rel="prefetch" href="/assets/js/7.c4357ee0.js"><link rel="prefetch" href="/assets/js/8.f06f4eb5.js"><link rel="prefetch" href="/assets/js/9.6874101d.js"><link rel="prefetch" href="/assets/js/vendors~flowchart.f107d70d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.c092e235.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container"><div><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/head.png" alt="学海无涯" class="logo"> <span class="site-name">学海无涯</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="theme-options"><!----> <div class="dark-theme-options toggle-option"><label for="dark-theme-toggle">Enable Dark Theme?</label> <input id="dark-theme-toggle" type="checkbox" checked="checked"></div></div></div></div> <div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      文章分组
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/AWS认证.html" class="nav-link"><i class="iconfont undefined"></i>
+  AWS认证
+</a></li><li class="dropdown-item"><!----> <a href="/category/Excel.html" class="nav-link"><i class="iconfont undefined"></i>
+  Excel
+</a></li><li class="dropdown-item"><!----> <a href="/category/HTML_CSS.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTML_CSS
+</a></li><li class="dropdown-item"><!----> <a href="/category/Python.html" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/category/SQL.html" class="nav-link"><i class="iconfont undefined"></i>
+  SQL
+</a></li><li class="dropdown-item"><!----> <a href="/category/Others.html" class="nav-link"><i class="iconfont undefined"></i>
+  Others
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  时光机
+</a></div><div class="nav-item"><a href="/aboutme/" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      文章分组
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/category/AWS认证.html" class="nav-link"><i class="iconfont undefined"></i>
+  AWS认证
+</a></li><li class="dropdown-item"><!----> <a href="/category/Excel.html" class="nav-link"><i class="iconfont undefined"></i>
+  Excel
+</a></li><li class="dropdown-item"><!----> <a href="/category/HTML_CSS.html" class="nav-link"><i class="iconfont undefined"></i>
+  HTML_CSS
+</a></li><li class="dropdown-item"><!----> <a href="/category/Python.html" class="nav-link"><i class="iconfont undefined"></i>
+  Python
+</a></li><li class="dropdown-item"><!----> <a href="/category/SQL.html" class="nav-link"><i class="iconfont undefined"></i>
+  SQL
+</a></li><li class="dropdown-item"><!----> <a href="/category/Others.html" class="nav-link"><i class="iconfont undefined"></i>
+  Others
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeLine/" class="nav-link"><i class="iconfont reco-date"></i>
+  时光机
+</a></div><div class="nav-item"><a href="/aboutme/" class="nav-link"><i class="iconfont reco-message"></i>
+  关于我
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Excel文件使用SQL操作Access</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/views/Excel/Excel%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8SQL.html#创建链接" class="sidebar-link">创建链接</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/Excel/Excel%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8SQL.html#关闭链接" class="sidebar-link">关闭链接</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/Excel/Excel%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8SQL.html#增-删-改-查-基础程序" class="sidebar-link">增/删/改/查 基础程序</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/Excel/Excel%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8SQL.html#进阶-使用commit" class="sidebar-link">进阶, 使用commit</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/views/Excel/Excel%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8SQL.html#新增" class="sidebar-link">新增</a></li><li class="sidebar-sub-header"><a href="/views/Excel/Excel%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8SQL.html#删除" class="sidebar-link">删除</a></li><li class="sidebar-sub-header"><a href="/views/Excel/Excel%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8SQL.html#更新" class="sidebar-link">更新</a></li><li class="sidebar-sub-header"><a href="/views/Excel/Excel%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8SQL.html#查询" class="sidebar-link">查询</a></li></ul></li></ul></section></li></ul> </aside> <div><main class="page reco-hide"> <div class="page-title"><h1>Excel文件使用SQL操作Access</h1> <hr> <div data-v-63d68988><i class="iconfont reco-account" data-v-63d68988><span data-v-63d68988>Eddy Xu</span></i> <i class="iconfont reco-date" data-v-63d68988><span data-v-63d68988>2019/8/16</span></i> <span id="/views/Excel/Excel%E6%96%87%E4%BB%B6%E4%BD%BF%E7%94%A8SQL.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-f72ffb60 data-v-63d68988><i class="iconfont reco-eye" style="margin-right: .5rem" data-v-f72ffb60></i> <a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;" data-v-f72ffb60></a></span> <i class="iconfont reco-tag tags" data-v-63d68988><span class="tag-item" data-v-63d68988>
+      excel
+    </span><span class="tag-item" data-v-63d68988>
+      vba
+    </span><span class="tag-item" data-v-63d68988>
+      sql
+    </span><span class="tag-item" data-v-63d68988>
+      access
+    </span></i></div></div> <div class="content__default"><h3 id="前提："><a href="#前提：" aria-hidden="true" class="header-anchor">#</a> 前提：</h3> <div class="tip custom-block"><p>本例使用的是Office 2016</p></div> <h3 id="添加ado-lib引用"><a href="#添加ado-lib引用" aria-hidden="true" class="header-anchor">#</a> 添加ADO Lib引用</h3> <ul><li>快捷键Alt+F11进入VBE Tools&gt;References...&gt;</li></ul> <p><img src="https://xmhblog.s3-us-west-2.amazonaws.com/excel-crud-1.png" alt="Excel-CRUD-Step1"></p> <ul><li>勾选 Microsoft ActiveXData Object</li></ul> <p><img src="https://xmhblog.s3-us-west-2.amazonaws.com/excel-crud-2.png" alt="Excel-CRUD-Step2"></p> <h2 id="创建链接"><a href="#创建链接" aria-hidden="true" class="header-anchor">#</a> 创建链接</h2> <div class="language-vbnet line-numbers-mode"><pre class="language-vbnet"><code><span class="token keyword">Function</span> Connect<span class="token punctuation">(</span>dbPath <span class="token keyword">As</span> <span class="token keyword">String</span><span class="token punctuation">)</span> <span class="token keyword">As</span> ADODB.Connection
+    <span class="token keyword">Set</span> objConn <span class="token operator">=</span> <span class="token keyword">New</span> ADODB.Connection
+    <span class="token keyword">With</span> objConn
+        .Provider <span class="token operator">=</span> <span class="token string">&quot;Microsoft.ACE.OLEDB.12.0&quot;</span>
+        .Properties<span class="token punctuation">(</span><span class="token string">&quot;Data Source&quot;</span><span class="token punctuation">)</span> <span class="token operator">=</span> dbPath
+        .Properties<span class="token punctuation">(</span><span class="token string">&quot;Persist Security Info&quot;</span><span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token keyword">False</span>
+        .<span class="token keyword">Open</span>
+    <span class="token keyword">End</span> <span class="token keyword">With</span>
+    <span class="token keyword">Set</span> Connect <span class="token operator">=</span> objConn
+    <span class="token function">Debug</span>.<span class="token function">Print</span> <span class="token string">&quot;Connection established...&quot;</span>
+<span class="token keyword">End</span> <span class="token keyword">Function</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h2 id="关闭链接"><a href="#关闭链接" aria-hidden="true" class="header-anchor">#</a> 关闭链接</h2> <div class="language-vbnet line-numbers-mode"><pre class="language-vbnet"><code><span class="token keyword">Sub</span> CloseConnection<span class="token punctuation">(</span>objConn <span class="token keyword">As</span> ADODB.Connection<span class="token punctuation">)</span>
+    <span class="token keyword">On Error</span> <span class="token keyword">Resume</span> <span class="token keyword">Next</span>
+    objConn.<span class="token keyword">Close</span>
+    <span class="token function">Debug</span>.<span class="token function">Print</span> <span class="token string">&quot;Connection closed...&quot;</span>
+    <span class="token keyword">Set</span> objConn <span class="token operator">=</span> <span class="token keyword">Nothing</span>
+<span class="token keyword">End</span> <span class="token keyword">Sub</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><h2 id="增-删-改-查-基础程序"><a href="#增-删-改-查-基础程序" aria-hidden="true" class="header-anchor">#</a> 增/删/改/查 基础程序</h2> <div class="language-vbnet line-numbers-mode"><pre class="language-vbnet"><code><span class="token keyword">Sub</span> Insert_Data<span class="token punctuation">(</span>strSQL <span class="token keyword">as</span> <span class="token keyword">String</span><span class="token punctuation">)</span>
+    <span class="token comment">'示例strSQL = &quot;INSERT INTO TableName(Column_Name1, Columns_Name2) Values('Value1', 'Value12')&quot;</span>
+    <span class="token comment">'需要在使用的时候传入strSQL查询语句</span>
+    objCon.Execute strSQL
+<span class="token keyword">End</span> <span class="token keyword">Sub</span>
+
+<span class="token keyword">Sub</span> Delete_Data<span class="token punctuation">(</span>strSQL <span class="token keyword">as</span> <span class="token keyword">String</span><span class="token punctuation">)</span>
+    <span class="token comment">'示例strSQL = &quot;DELETE FROM TableName WHERE Column_Name1='Value1'&quot;</span>
+    <span class="token comment">'需要在使用的时候传入strSQL查询语句</span>
+    objCon.Execute strSQL
+<span class="token keyword">End</span> <span class="token keyword">Sub</span>
+
+<span class="token keyword">Sub</span> Update_Data<span class="token punctuation">(</span>strSQL <span class="token keyword">as</span> <span class="token keyword">String</span><span class="token punctuation">)</span>
+    <span class="token comment">'示例strSQL = &quot;UPDATE TableName SET Column_Name2= 'Value2' WHERE Column_Name1='Value1&quot;</span>
+    <span class="token comment">'需要在使用的时候传入strSQL查询语句</span>
+    objCon.Execute strSQL
+<span class="token keyword">End</span> <span class="token keyword">Sub</span>
+
+<span class="token keyword">Sub</span> Read_Data<span class="token punctuation">(</span>strSQL <span class="token keyword">As</span> <span class="token keyword">String</span><span class="token punctuation">,</span> shtName <span class="token keyword">As</span> <span class="token keyword">String</span><span class="token punctuation">,</span> objConn <span class="token keyword">As</span> ADODB.Connection<span class="token punctuation">)</span>
+    <span class="token comment">'示例strSQL = &quot;SELECT * FROM TableName&quot;</span>
+    <span class="token keyword">Set</span> objRecordSet <span class="token operator">=</span> <span class="token keyword">New</span> ADODB.Recordset
+    objRecordSet.<span class="token keyword">Open</span> strSQL<span class="token punctuation">,</span> objConn
+    <span class="token comment">'输出字段名称和查询内容</span>
+    <span class="token keyword">With</span> ThisWorkbook.Sheets<span class="token punctuation">(</span>shtName<span class="token punctuation">)</span>
+        .UsedRange.ClearContents
+        .Range<span class="token punctuation">(</span><span class="token string">&quot;A1&quot;</span><span class="token punctuation">)</span>.<span class="token keyword">Select</span>
+        <span class="token keyword">For Each</span> objField <span class="token keyword">In</span> objRecordSet.Fields
+            ActiveCell.Value <span class="token operator">=</span> objField.<span class="token keyword">Name</span>
+            ActiveCell.Offset<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.<span class="token keyword">Select</span>
+        <span class="token keyword">Next</span>
+        .Range<span class="token punctuation">(</span><span class="token string">&quot;A2&quot;</span><span class="token punctuation">)</span>.CopyFromRecordset objRecordSet
+        .Range<span class="token punctuation">(</span><span class="token string">&quot;A1&quot;</span><span class="token punctuation">)</span>.CurrentRegion.EntireColumn.AutoFit
+    <span class="token keyword">End</span> <span class="token keyword">With</span>
+<span class="token keyword">End</span> <span class="token keyword">Sub</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br></div></div><h2 id="进阶-使用commit"><a href="#进阶-使用commit" aria-hidden="true" class="header-anchor">#</a> 进阶, 使用commit</h2> <p>在操作数据库时，不想实时读写，遇到错误的时候需要回滚
+引用这段代码时，需要自己根据实际情况修改SQL相关字段名称和语句</p> <h3 id="新增"><a href="#新增" aria-hidden="true" class="header-anchor">#</a> 新增</h3> <div class="language-vbnet line-numbers-mode"><pre class="language-vbnet"><code><span class="token keyword">Sub</span> Main_Insert<span class="token punctuation">(</span><span class="token punctuation">)</span>
+   
+    <span class="token keyword">Dim</span> objConn <span class="token keyword">As</span> ADODB.Connection
+    <span class="token keyword">Dim</span> i <span class="token keyword">As</span> <span class="token keyword">Integer</span><span class="token punctuation">,</span> total_row <span class="token keyword">As</span> <span class="token keyword">Integer</span>
+    <span class="token keyword">Dim</span> myPath <span class="token keyword">As</span> <span class="token keyword">String</span>
+
+    <span class="token comment">'放在共享盘上，方便多人操作，权限需要通过共享盘来控制</span>
+    myPath <span class="token operator">=</span> &quot;\\ant\Database<span class="token string">&quot; &amp; &quot;</span>\db.mdb&quot;
+     
+    <span class="token keyword">With</span> Sheets<span class="token punctuation">(</span>&quot;新增&quot;<span class="token punctuation">)</span>
+      total_row <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>Rows.Count<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.<span class="token keyword">End</span><span class="token punctuation">(</span>xlUp<span class="token punctuation">)</span>.Row
+        <span class="token comment">'Excel一大特征就是灵活，代价是对数据格式控制的不好，即便设置了数据有效性，也会被用户轻易覆盖，本段代码用来检查key值是否为空，可以增加检查其他字段</span>
+        i <span class="token operator">=</span> <span class="token number">2</span>
+        <span class="token keyword">Do</span> <span class="token keyword">While</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> total_row<span class="token punctuation">)</span>
+            <span class="token keyword">If</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.Value <span class="token operator">=</span> Null <span class="token keyword">Or</span> Trim<span class="token punctuation">(</span>.Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.Value<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span> <span class="token keyword">Then</span>
+                MsgBox <span class="token punctuation">(</span>&quot;第一列Tracking Number有空值，请检查后再上传！  <span class="token operator">-</span><span class="token operator">-</span><span class="token string">&quot; &amp; i &amp; &quot;</span>行&quot;<span class="token punctuation">)</span>
+                <span class="token keyword">Exit</span> <span class="token keyword">Sub</span>
+            <span class="token keyword">End</span> <span class="token keyword">If</span>
+            i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">Loop</span>
+        
+        <span class="token keyword">Set</span> objConn <span class="token operator">=</span> Connect<span class="token punctuation">(</span>myPath<span class="token punctuation">)</span>
+        <span class="token keyword">On Error</span> <span class="token keyword">GoTo</span> CleanFail
+        objConn.BeginTrans
+
+        i <span class="token operator">=</span> <span class="token number">2</span>
+        <span class="token keyword">Do</span> <span class="token keyword">While</span> <span class="token punctuation">(</span>i  <span class="token operator">&lt;=</span> total_row<span class="token punctuation">)</span>         
+
+            Tracking_Number <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.Value
+            Depart_Date <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>.Value
+            Scan_Date <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>.Value
+            User_Name <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>.Value
+            Report_ID <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>.Value
+            Filling_Number <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>.Value
+            Uploader <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span>.Value
+
+            strSQL <span class="token operator">=</span> <span class="token string">&quot;Insert Into Expense (Tracking_Number,Depart_Date,Scan_Date,User_Name,Report_ID,Filling_Number,Uploader) &quot;</span> <span class="token operator">&amp;</span> _
+                        <span class="token string">&quot;Values('&quot;</span> <span class="token operator">&amp;</span> Tracking_Number <span class="token operator">&amp;</span> <span class="token string">&quot;',&quot;</span> <span class="token operator">&amp;</span> _
+                        IIf<span class="token punctuation">(</span>Depart_Date <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;Null&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;'&quot;</span> <span class="token operator">&amp;</span> Depart_Date <span class="token operator">&amp;</span> <span class="token string">&quot;'&quot;</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token string">&quot;,&quot;</span> <span class="token operator">&amp;</span> _
+                        IIf<span class="token punctuation">(</span>Scan_Date <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;Null&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;'&quot;</span> <span class="token operator">&amp;</span> Scan_Date <span class="token operator">&amp;</span> <span class="token string">&quot;'&quot;</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token string">&quot;,'&quot;</span> <span class="token operator">&amp;</span> _
+                        User_Name <span class="token operator">&amp;</span> <span class="token string">&quot;','&quot;</span> <span class="token operator">&amp;</span> Report_ID <span class="token operator">&amp;</span> <span class="token string">&quot;','&quot;</span> <span class="token operator">&amp;</span> Filling_Number <span class="token operator">&amp;</span> <span class="token string">&quot;','&quot;</span> <span class="token operator">&amp;</span> Uploader <span class="token operator">&amp;</span> <span class="token string">&quot;')&quot;</span>
+                
+            <span class="token keyword">Set</span> cmd <span class="token operator">=</span> <span class="token keyword">New</span> ADODB.Command
+            <span class="token keyword">Set</span> cmd.ActiveConnection <span class="token operator">=</span> objConn
+            cmd.CommandType <span class="token operator">=</span> adCmdText
+            cmd.CommandText <span class="token operator">=</span> strSQL
+            cmd.Execute
+
+            i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">Loop</span>
+        <span class="token comment">'循环全部完成后统一提交</span>
+        objConn.CommitTrans
+    
+    <span class="token keyword">End</span> <span class="token keyword">With</span>
+    
+CleanExit<span class="token punctuation">:</span>
+    <span class="token keyword">Call</span> CloseConnection<span class="token punctuation">(</span>objConn<span class="token punctuation">)</span>
+    MsgBox &quot;数据上传成功！<span class="token string">&quot;, vbOKOnly, &quot;</span>成功&quot;
+    <span class="token keyword">Exit</span> <span class="token keyword">Sub</span>
+    
+CleanFail<span class="token punctuation">:</span>
+    objConn.RollbackTrans
+    MsgBox &quot;上传数据有误，本次未成功上传.&quot; <span class="token operator">&amp;</span> Err.Description
+    <span class="token function">Debug</span>.<span class="token function">Print</span> Err.Number<span class="token punctuation">,</span> Err.Description
+    <span class="token keyword">Call</span> CloseConnection<span class="token punctuation">(</span>objConn<span class="token punctuation">)</span>
+    <span class="token keyword">Exit</span> <span class="token keyword">Sub</span>
+
+<span class="token keyword">End</span> <span class="token keyword">Sub</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br></div></div><h3 id="删除"><a href="#删除" aria-hidden="true" class="header-anchor">#</a> 删除</h3> <div class="language-vbnet line-numbers-mode"><pre class="language-vbnet"><code><span class="token keyword">Sub</span> Main_Delete<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">Dim</span> objConn <span class="token keyword">As</span> ADODB.Connection
+    <span class="token keyword">Dim</span> i <span class="token keyword">As</span> <span class="token keyword">Integer</span><span class="token punctuation">,</span> total_row <span class="token keyword">As</span> <span class="token keyword">Integer</span>
+    <span class="token keyword">Dim</span> myPath <span class="token keyword">As</span> <span class="token keyword">String</span>
+    
+    myPath <span class="token operator">=</span> &quot;\\ant\Database<span class="token string">&quot; &amp; &quot;</span>\db.mdb&quot;
+     
+    <span class="token keyword">With</span> Sheets<span class="token punctuation">(</span>&quot;删除&quot;<span class="token punctuation">)</span>
+        total_row <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>Rows.Count<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.<span class="token keyword">End</span><span class="token punctuation">(</span>xlUp<span class="token punctuation">)</span>.Row
+        <span class="token comment">'Excel一大特征就是灵活，代价是对数据格式控制的不好，即便设置了数据有效性，也会被用户轻易覆盖，本段代码用来检查key值是否为空，可以增加检查其他字段</span>
+        i <span class="token operator">=</span> <span class="token number">2</span>
+        <span class="token keyword">Do</span> <span class="token keyword">While</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> total_row<span class="token punctuation">)</span>
+            <span class="token keyword">If</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.Value <span class="token operator">=</span> Null <span class="token keyword">Or</span> Trim<span class="token punctuation">(</span>.Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.Value<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span> <span class="token keyword">Then</span>
+                MsgBox <span class="token punctuation">(</span>&quot;第一列Parcel Tracking Number有空值，请检查后再上传！  <span class="token operator">-</span><span class="token operator">-</span><span class="token string">&quot; &amp; i &amp; &quot;</span>行&quot;<span class="token punctuation">)</span>
+                <span class="token keyword">Exit</span> <span class="token keyword">Sub</span>
+            <span class="token keyword">End</span> <span class="token keyword">If</span>
+            i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">Loop</span>
+        
+        <span class="token keyword">Set</span> objConn <span class="token operator">=</span> Connect<span class="token punctuation">(</span>myPath<span class="token punctuation">)</span>
+        <span class="token keyword">On Error</span> <span class="token keyword">GoTo</span> CleanFail
+        objConn.BeginTrans
+    
+        i <span class="token operator">=</span> <span class="token number">2</span>
+        <span class="token keyword">Do</span> <span class="token keyword">While</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> total_row <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>          <span class="token comment">'条件判定,运行到最后一行</span>
+            strSQL <span class="token operator">=</span> <span class="token string">&quot;DELETE FROM Expense WHERE Tracking_Number='&quot;</span> <span class="token operator">&amp;</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.Value <span class="token operator">&amp;</span> <span class="token string">&quot;'&quot;</span>
+            <span class="token keyword">Set</span> cmd <span class="token operator">=</span> <span class="token keyword">New</span> ADODB.Command
+            <span class="token keyword">Set</span> cmd.ActiveConnection <span class="token operator">=</span> objConn
+            cmd.CommandType <span class="token operator">=</span> adCmdText
+            cmd.CommandText <span class="token operator">=</span> strSQL
+            cmd.Execute
+            i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">Loop</span>
+
+        objConn.CommitTrans
+    
+    <span class="token keyword">End</span> <span class="token keyword">With</span>
+       
+CleanExit<span class="token punctuation">:</span>
+    <span class="token keyword">Call</span> CloseConnection<span class="token punctuation">(</span>objConn<span class="token punctuation">)</span>
+    MsgBox &quot;数据删除成功！<span class="token string">&quot;, vbOKOnly, &quot;</span>成功&quot;
+    <span class="token keyword">Exit</span> <span class="token keyword">Sub</span>
+
+CleanFail<span class="token punctuation">:</span>
+    objConn.RollbackTrans
+    MsgBox &quot;数据有误，本次未成功删除.&quot; <span class="token operator">&amp;</span> Err.Description
+    <span class="token function">Debug</span>.<span class="token function">Print</span> Err.Number<span class="token punctuation">,</span> Err.Description
+    <span class="token keyword">Call</span> CloseConnection<span class="token punctuation">(</span>objConn<span class="token punctuation">)</span>
+    <span class="token keyword">Exit</span> <span class="token keyword">Sub</span>
+
+<span class="token keyword">End</span> <span class="token keyword">Sub</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br></div></div><h3 id="更新"><a href="#更新" aria-hidden="true" class="header-anchor">#</a> 更新</h3> <div class="language-vbnet line-numbers-mode"><pre class="language-vbnet"><code><span class="token keyword">Sub</span> Main_Update<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">Dim</span> objConn <span class="token keyword">As</span> ADODB.Connection
+    <span class="token keyword">Dim</span> myPath <span class="token keyword">As</span> <span class="token keyword">String</span>
+    <span class="token keyword">Dim</span> strSQL <span class="token keyword">As</span> <span class="token keyword">String</span>
+    <span class="token keyword">Dim</span> shtName <span class="token keyword">As</span> <span class="token keyword">String</span>
+    <span class="token keyword">Dim</span> i <span class="token keyword">As</span> <span class="token keyword">Integer</span><span class="token punctuation">,</span> total_row <span class="token keyword">As</span> <span class="token keyword">Integer</span>
+    
+    myPath <span class="token operator">=</span> &quot;\\ant\Database<span class="token string">&quot; &amp; &quot;</span>\db.mdb&quot;
+
+    <span class="token keyword">With</span> ThisWorkbook.Sheets<span class="token punctuation">(</span>&quot;更新&quot;<span class="token punctuation">)</span>
+        total_row <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>Rows.Count<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.<span class="token keyword">End</span><span class="token punctuation">(</span>xlUp<span class="token punctuation">)</span>.Row
+        <span class="token comment">'Excel一大特征就是灵活，代价是对数据格式控制的不好，即便设置了数据有效性，也会被用户轻易覆盖，本段代码用来检查key值是否为空，可以增加检查其他字段</span>
+        i <span class="token operator">=</span> <span class="token number">2</span>
+        <span class="token keyword">Do</span> <span class="token keyword">While</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> total_row<span class="token punctuation">)</span>
+            <span class="token keyword">If</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.Value <span class="token operator">=</span> Null <span class="token keyword">Or</span> Trim<span class="token punctuation">(</span>.Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.Value<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token string">&quot;&quot;</span> <span class="token keyword">Then</span>
+                MsgBox <span class="token punctuation">(</span>&quot;第一列Parcel Tracking Number有空值，请检查后再上传！  <span class="token operator">-</span><span class="token operator">-</span><span class="token string">&quot; &amp; i &amp; &quot;</span>行&quot;<span class="token punctuation">)</span>
+                <span class="token keyword">Exit</span> <span class="token keyword">Sub</span>
+            <span class="token keyword">End</span> <span class="token keyword">If</span>
+            i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">Loop</span>
+        
+        <span class="token keyword">Set</span> objConn <span class="token operator">=</span> Connect<span class="token punctuation">(</span>myPath<span class="token punctuation">)</span>
+        <span class="token keyword">On Error</span> <span class="token keyword">GoTo</span> CleanFail
+        objConn.BeginTrans
+        
+        i <span class="token operator">=</span> <span class="token number">2</span>
+        <span class="token keyword">Do</span> <span class="token keyword">While</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;=</span> total_row<span class="token punctuation">)</span>          
+           
+            Tracking_Number <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>.Value
+            Depart_Date <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span>.Value
+            Scan_Date <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>.Value
+            User_Name <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">)</span>.Value
+            Report_ID <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span>.Value
+            Filling_Number <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">)</span>.Value
+            Uploader <span class="token operator">=</span> .Cells<span class="token punctuation">(</span>i<span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">)</span>.Value
+            
+            strSQL <span class="token operator">=</span> <span class="token string">&quot;UPDATE Expense SET Depart_Date=&quot;</span> <span class="token operator">&amp;</span> IIf<span class="token punctuation">(</span>Depart_Date <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;Null&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;'&quot;</span> <span class="token operator">&amp;</span> Depart_Date <span class="token operator">&amp;</span> <span class="token string">&quot;'&quot;</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token string">&quot;,&quot;</span> <span class="token operator">&amp;</span> _
+                     <span class="token string">&quot;Scan_Date=&quot;</span> <span class="token operator">&amp;</span> IIf<span class="token punctuation">(</span>Scan_Date <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">&quot;Null&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;'&quot;</span> <span class="token operator">&amp;</span> Scan_Date <span class="token operator">&amp;</span> <span class="token string">&quot;'&quot;</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token string">&quot;,&quot;</span> <span class="token operator">&amp;</span> _
+                     <span class="token string">&quot;User_Name='&quot;</span> <span class="token operator">&amp;</span> User_Name <span class="token operator">&amp;</span> <span class="token string">&quot;',&quot;</span> <span class="token operator">&amp;</span> _
+                     <span class="token string">&quot;Report_ID='&quot;</span> <span class="token operator">&amp;</span> Report_ID <span class="token operator">&amp;</span> <span class="token string">&quot;',&quot;</span> <span class="token operator">&amp;</span> _
+                     <span class="token string">&quot;Filling_Number='&quot;</span> <span class="token operator">&amp;</span> Filling_Number <span class="token operator">&amp;</span> <span class="token string">&quot;',&quot;</span> <span class="token operator">&amp;</span> _
+                     <span class="token string">&quot;Uploader='&quot;</span> <span class="token operator">&amp;</span> Uploader <span class="token operator">&amp;</span> <span class="token string">&quot;' &quot;</span> <span class="token operator">&amp;</span> _
+                     <span class="token string">&quot;where Tracking_Number ='&quot;</span> <span class="token operator">&amp;</span> Tracking_Number <span class="token operator">&amp;</span> <span class="token string">&quot;' &quot;</span>
+                       
+            <span class="token keyword">Set</span> cmd <span class="token operator">=</span> <span class="token keyword">New</span> ADODB.Command
+            <span class="token keyword">Set</span> cmd.ActiveConnection <span class="token operator">=</span> objConn
+            cmd.CommandType <span class="token operator">=</span> adCmdText
+            cmd.CommandText <span class="token operator">=</span> strSQL
+            cmd.Execute
+            
+            i <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">Loop</span>
+        objConn.CommitTrans
+    <span class="token keyword">End</span> <span class="token keyword">With</span>
+    
+CleanExit<span class="token punctuation">:</span>
+    <span class="token keyword">Call</span> CloseConnection<span class="token punctuation">(</span>objConn<span class="token punctuation">)</span>
+    MsgBox &quot;数据更新成功！<span class="token string">&quot;, vbOKOnly, &quot;</span>成功&quot;
+    <span class="token keyword">Exit</span> <span class="token keyword">Sub</span>
+        
+CleanFail<span class="token punctuation">:</span>
+    objConn.RollbackTrans
+    MsgBox &quot;更新有误！&quot; <span class="token operator">&amp;</span> Err.Description
+    <span class="token function">Debug</span>.<span class="token function">Print</span> Err.Number<span class="token punctuation">,</span> Err.Description
+    <span class="token keyword">Call</span> CloseConnection<span class="token punctuation">(</span>objConn<span class="token punctuation">)</span>
+    <span class="token keyword">Exit</span> <span class="token keyword">Sub</span>
+ 
+<span class="token keyword">End</span> <span class="token keyword">Sub</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br></div></div><h3 id="查询"><a href="#查询" aria-hidden="true" class="header-anchor">#</a> 查询</h3> <p>引用了基础模块里的Read_Data</p> <div class="language-vbnet line-numbers-mode"><pre class="language-vbnet"><code><span class="token keyword">Sub</span> Main_Read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">Dim</span> objConn <span class="token keyword">As</span> ADODB.Connection
+    <span class="token keyword">Dim</span> myPath <span class="token keyword">As</span> <span class="token keyword">String</span>
+    <span class="token keyword">Dim</span> strSQL <span class="token keyword">As</span> <span class="token keyword">String</span>
+    <span class="token keyword">Dim</span> shtName <span class="token keyword">As</span> <span class="token keyword">String</span>
+    
+    myPath <span class="token operator">=</span> &quot;\\ant\Database<span class="token string">&quot; &amp; &quot;</span>\db.mdb&quot;
+    <span class="token keyword">Set</span> objConn <span class="token operator">=</span> Connect<span class="token punctuation">(</span>myPath<span class="token punctuation">)</span>
+
+    strSQL <span class="token operator">=</span> <span class="token string">&quot;Select * from Expense&quot;</span>
+    shtName <span class="token operator">=</span> &quot;查询&quot;
+    <span class="token keyword">Call</span> Read_Data<span class="token punctuation">(</span>strSQL<span class="token punctuation">,</span> shtName<span class="token punctuation">,</span> objConn<span class="token punctuation">)</span>
+
+    <span class="token keyword">Call</span> CloseConnection<span class="token punctuation">(</span>objConn<span class="token punctuation">)</span>
+
+<span class="token keyword">End</span> <span class="token keyword">Sub</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div></div> <!----> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">8/16/2019, 12:06:44 PM</span></div></footer> <!----> </main> <div class="valine-wrapper" data-v-4d8d2b84><div id="valine" data-v-4d8d2b84></div></div></div> <div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;background-color:rgba(231, 234, 241,.5);display:none;" data-v-0a357e7e data-v-0a357e7e><i class="iconfont reco-up" data-v-0a357e7e></i></div></div></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.d0656bfa.js" defer></script><script src="/assets/js/5.14f5043f.js" defer></script><script src="/assets/js/2.781c3519.js" defer></script><script src="/assets/js/1.9afa1492.js" defer></script><script src="/assets/js/16.4e46f9d6.js" defer></script>
+  </body>
+</html>
